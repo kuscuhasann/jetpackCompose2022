@@ -25,7 +25,9 @@ fun MainPage(navController: NavController) {
         Text(text ="Ana Sayfa",fontSize = 50.sp)
 
         Button(onClick = {
-            navController.navigate("counterPage")
+            navController.navigate("counterPage") {
+                popUpTo("mainPage") { inclusive = true }
+            }
         }) {
             Text(text = "Hesaplama Sayfasına Git")
         }
