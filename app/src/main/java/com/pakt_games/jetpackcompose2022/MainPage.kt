@@ -6,16 +6,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun CounterPage() {
-    var counter = remember {
-        mutableStateOf(0)
-    }
+fun MainPage(navController: NavController) {
     Column(
         //horizontalAlignment = Yatayda Hizalama
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -24,12 +21,13 @@ fun CounterPage() {
         //Sayfaya kendini yayar.
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(text ="Sayaç : ${counter.value}")
+
+        Text(text ="Ana Sayfa",fontSize = 50.sp)
 
         Button(onClick = {
-            counter.value += 1
+            navController.navigate("counterPage")
         }) {
-            Text(text = "Tıkla")
+            Text(text = "Hesaplama Sayfasına Git")
         }
     }
 }

@@ -18,6 +18,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.pakt_games.jetpackcompose2022.ui.theme.JetpackCompose2022Theme
 import org.intellij.lang.annotations.JdkConstants
 
@@ -31,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainPage()
+                    DirectionControl()
                 }
             }
         }
@@ -39,31 +43,24 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainPage() {
-    Column(
-        //horizontalAlignment = Yatayda Hizalama
-        horizontalAlignment = Alignment.End,
-        //verticalArrangement = Dikeyde Hizalama Yapar
-        verticalArrangement = Arrangement.SpaceEvenly,
-        //Sayfaya kendini yayar.
-        modifier = Modifier.fillMaxSize()
-    ) {
-
-        Text(text ="Ana Sayfa",fontSize = 50.sp)
-
-        Button(onClick = {
-
-        }) {
-            Text(text = "Hesaplama Sayfasına Git")
+fun DirectionControl() {
+    var navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "mainPage") {
+        composable("mainPage") {
+            MainPage(navController = navController)
+        }
+        composable("counterPage") {
+            CounterPage()
         }
     }
 }
+
+
 
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     JetpackCompose2022Theme {
-        MainPage()
     }
 }
