@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.pakt_games.jetpackcompose2022.ui.theme.JetpackCompose2022Theme
 import org.intellij.lang.annotations.JdkConstants
 
@@ -39,26 +40,25 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainPage() {
-    var counter = remember {
-        mutableStateOf(0)
-    }
     Column(
         //horizontalAlignment = Yatayda Hizalama
         horizontalAlignment = Alignment.End,
         //verticalArrangement = Dikeyde Hizalama Yapar
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.SpaceEvenly,
         //Sayfaya kendini yayar.
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(text ="Sayaç : ${counter.value}")
-        
+
+        Text(text ="Ana Sayfa",fontSize = 50.sp)
+
         Button(onClick = {
-            counter.value += 1
+
         }) {
-            Text(text = "Tıkla")
+            Text(text = "Hesaplama Sayfasına Git")
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
