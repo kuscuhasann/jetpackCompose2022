@@ -18,10 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavArgument
 import androidx.navigation.NavController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.pakt_games.jetpackcompose2022.ui.theme.JetpackCompose2022Theme
 import org.intellij.lang.annotations.JdkConstants
 
@@ -49,8 +52,11 @@ fun DirectionControl() {
         composable("mainPage") {
             MainPage(navController = navController)
         }
-        composable("counterPage") {
-            CounterPage()
+        composable("counterPage/{customerName}",arguments = listOf(
+            navArgument("customerName") {type = NavType.StringType }
+        )) {
+            val customerName = it.arguments?.getString("customerName")!!
+            CounterPage(customerName = customerName)
         }
     }
 }

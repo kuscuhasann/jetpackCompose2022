@@ -25,7 +25,7 @@ fun MainPage(navController: NavController) {
         Text(text ="Ana Sayfa",fontSize = 50.sp)
 
         Button(onClick = {
-            navController.navigate("counterPage") {
+            navController.navigate("counterPage/hasan") {
                 popUpTo("mainPage") { inclusive = true }
             }
         }) {
