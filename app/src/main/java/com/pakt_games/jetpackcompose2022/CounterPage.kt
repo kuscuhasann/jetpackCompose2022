@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun CounterPage(customerName: String) {
+fun CounterPage(customer: Customer) {
     var counter = remember {
         mutableStateOf(0)
     }
@@ -24,7 +24,9 @@ fun CounterPage(customerName: String) {
         //Sayfaya kendini yayar.
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(text ="Kullancıı Adı" + customerName)
+        Text(text ="Kullancıı Adı" + customer.customerName)
+        Text(text ="Kullancıı Adı" + customer.customerSurname)
+        Text(text ="Kullancıı Adı" + customer.customerPhone)
         Text(text ="Sayaç : ${counter.value}")
 
         Button(onClick = {

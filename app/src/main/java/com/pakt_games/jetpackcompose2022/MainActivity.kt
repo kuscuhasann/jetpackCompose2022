@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.gson.Gson
 import com.pakt_games.jetpackcompose2022.ui.theme.JetpackCompose2022Theme
 import org.intellij.lang.annotations.JdkConstants
 
@@ -52,11 +53,12 @@ fun DirectionControl() {
         composable("mainPage") {
             MainPage(navController = navController)
         }
-        composable("counterPage/{customerName}",arguments = listOf(
-            navArgument("customerName") {type = NavType.StringType }
+        composable("counterPage/{model}",arguments = listOf(
+            navArgument("model") {type = NavType.StringType }
         )) {
-            val customerName = it.arguments?.getString("customerName")!!
-            CounterPage(customerName = customerName)
+            val jsonModel = it.arguments?.getString("model")
+            val model = Gson().fromJson(jsonModel,Customer::class.java)
+            CounterPage(model)
         }
     }
 }

@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.gson.Gson
 
 @Composable
 fun MainPage(navController: NavController) {
@@ -25,7 +26,9 @@ fun MainPage(navController: NavController) {
         Text(text ="Ana Sayfa",fontSize = 50.sp)
 
         Button(onClick = {
-            navController.navigate("counterPage/hasan") {
+            val customerModel = Customer(1, "Hasan", "Kuşçu", 1001)
+            val customerJson = Gson().toJson(customerModel)
+            navController.navigate("counterPage/$customerJson") {
                 popUpTo("mainPage") { inclusive = true }
             }
         }) {
